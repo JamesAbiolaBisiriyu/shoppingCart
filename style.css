@@ -13,7 +13,7 @@
   --quantity-badge: red;
   --shadow-subtle: rgba(0, 0, 0, 0.08);
   --shadow-strong: rgba(0, 0, 0, 0.15);
-  --danger-red: #dc3545;  /* New variable for clear cart button */
+  --danger-red: #dc3545;
   --danger-hover: #c82333;
 }
 
@@ -28,7 +28,9 @@ body {
 .container {
   width: 1000px;
   margin: auto;
+  padding-top: 80px;  /* Space for fixed navbar */
   transition: 0.4s ease;
+  position: relative;
 }
 
 .container h1 {
@@ -36,12 +38,18 @@ body {
   font-weight: 600;
 }
 
-/* ================= HEADER ================= */
-.container header {
-  display: grid;
-  grid-template-columns: 1fr 60px;
+/* ================= FIXED NAVBAR ================= */
+nav {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 40px;
+  padding: 15px 0;
+  width: 1000px;
+  background-color: var(--light-bg);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--primary-light);
 }
 
 .shopping {
@@ -61,13 +69,13 @@ body {
   transform: scale(1.1);
 }
 
-.shopping .quantity {  
+.shopping .quantity {
   background: var(--quantity-badge);
   border-radius: 50%;
   color: var(--white);
   position: absolute;
   top: -8px;
-  right: -8px;
+  right: -25px;
   padding: 2px 6px;
   min-width: 18px;
   height: 18px;
@@ -84,7 +92,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .item {
@@ -167,6 +175,7 @@ button:hover {
   transition: 0.4s ease;
   display: flex;
   flex-direction: column;
+  z-index: 1001;  /* Higher than navbar */
 }
 
 .active .cart {
