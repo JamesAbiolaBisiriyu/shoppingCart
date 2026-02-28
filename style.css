@@ -1,20 +1,20 @@
 /* ================= CSS VARIABLES ================= */
 :root {
-  --primary-purple: #560bad;
-  --primary-light: #7842b6;
-  --dark-bg: #1c1f25;
-  --light-bg: #f4f4f4;
-  --white: #ffffff;
-  --gray-light: #eee;
-  --gray-medium: #ddd;
-  --gray-dark: #333;
-  --heart-default: #bbb;
-  --heart-liked: red;
-  --quantity-badge: red;
-  --shadow-subtle: rgba(0, 0, 0, 0.08);
-  --shadow-strong: rgba(0, 0, 0, 0.15);
-  --danger-red: #dc3545;
-  --danger-hover: #c82333;
+  --primary-purple: #560bad;      /* Main theme color */
+  --primary-light: #7842b6;       /* Hover state color */
+  --dark-bg: #1c1f25;             /* Dark background for buttons */
+  --light-bg: #f4f4f4;            /* Page background */
+  --white: #ffffff;                /* White for cards/text */
+  --gray-light: #eee;              /* Light borders */
+  --gray-medium: #ddd;             /* Medium borders */
+  --gray-dark: #333;               /* Dark hover states */
+  --heart-default: #bbb;           /* Unliked heart color */
+  --heart-liked: red;               /* Liked heart color */
+  --quantity-badge: red;            /* Cart counter badge */
+  --shadow-subtle: rgba(0, 0, 0, 0.08);    /* Light shadow */
+  --shadow-strong: rgba(0, 0, 0, 0.15);    /* Heavy shadow */
+  --danger-red: #dc3545;            /* Clear cart button */
+  --danger-hover: #c82333;          /* Clear cart hover */
 }
 
 /* ================= GLOBAL ================= */
@@ -25,10 +25,11 @@ body {
   padding: 0;
 }
 
+/* Main container - centers content with fixed width */
 .container {
   width: 1000px;
   margin: auto;
-  padding-top: 80px;  /* Space for fixed navbar */
+  padding-top: 80px;  /* Prevents content from hiding under fixed navbar */
   transition: 0.4s ease;
   position: relative;
 }
@@ -39,24 +40,27 @@ body {
 }
 
 /* ================= FIXED NAVBAR ================= */
+/* Navbar stays at top while content scrolls underneath */
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  /* Title left, cart right */
   align-items: center;
   padding: 15px 0;
   width: 1000px;
   background-color: var(--light-bg);
   position: fixed;
   top: 0;
-  z-index: 1000;
-  border-bottom: 2px solid var(--primary-light);
+  z-index: 1000;                    /* Stays above content */
+  border-bottom: 2px solid var(--primary-light);  /* Visual separation */
 }
 
+/* Shopping cart icon container */
 .shopping {
-  position: relative;
+  position: relative;  /* For absolute positioning of badge */
   display: inline-block;
 }
 
+/* Cart icon styling */
 .shopping i {
   font-size: 24px;
   color: var(--primary-purple);
@@ -66,19 +70,20 @@ nav {
 
 .shopping i:hover {
   color: var(--primary-light);
-  transform: scale(1.1);
+  transform: scale(1.1);  /* Slight grow effect on hover */
 }
 
+/* Cart item count badge */
 .shopping .quantity {
   background: var(--quantity-badge);
-  border-radius: 50%;
+  border-radius: 50%;      /* Perfect circle */
   color: var(--white);
   position: absolute;
   top: -8px;
-  right: -25px;
+  right: -25px;            /* Positions outside the icon */
   padding: 2px 6px;
-  min-width: 18px;
-  height: 18px;
+  min-width: 18px;         /* Ensures circle shape */
+  height: 18px;            /* Fixed height */
   font-size: 12px;
   font-weight: bold;
   display: flex;
@@ -88,6 +93,7 @@ nav {
 }
 
 /* ================= PRODUCT GRID ================= */
+/* 3-column grid layout for products */
 .list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -95,6 +101,7 @@ nav {
   margin-top: 20px;
 }
 
+/* Individual product card */
 .item {
   text-align: center;
   background-color: var(--white);
@@ -105,14 +112,15 @@ nav {
 }
 
 .item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px var(--shadow-strong);
+  transform: translateY(-8px);     /* Lift effect */
+  box-shadow: 0 15px 30px var(--shadow-strong);  /* Stronger shadow */
 }
 
+/* Product image */
 .item img {
   width: 100%;
   height: 220px;
-  object-fit: cover;
+  object-fit: cover;      /* Prevents image distortion */
   border-radius: 8px;
 }
 
@@ -128,6 +136,7 @@ nav {
 }
 
 /* ================= BUTTONS ================= */
+/* General button styling */
 button {
   padding: 8px 14px;
   border: none;
@@ -141,47 +150,52 @@ button {
 
 button:hover {
   background-color: var(--primary-light);
-  transform: scale(1.05);
+  transform: scale(1.05);  /* Slight grow on hover */
 }
 
 /* ================= HEART ================= */
+/* Like button styling */
 .like-btn {
   display: block;
   margin-top: 10px;
   font-size: 20px;
   cursor: pointer;
-  color: var(--heart-default);
+  color: var(--heart-default);  /* Gray when unliked */
   transition: 0.3s ease;
 }
 
 .like-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.2);  /* Enlarge on hover */
 }
 
+/* Liked state - toggled by JavaScript */
 .liked {
-  color: var(--heart-liked);
+  color: var(--heart-liked);  /* Red when liked */
 }
 
 /* ================= CART PANEL ================= */
+/* Sliding cart panel - hidden by default */
 .cart {
   position: fixed;
   top: 0;
-  right: -500px;
+  right: -500px;           /* Hidden off-screen */
   width: 500px;
-  height: 100vh;
+  height: 100vh;           /* Full viewport height */
   background-color: var(--white);
   border-left: 3px solid var(--primary-purple);
   box-shadow: -5px 0 20px var(--shadow-strong);
-  transition: 0.4s ease;
+  transition: 0.4s ease;    /* Smooth slide animation */
   display: flex;
-  flex-direction: column;
-  z-index: 1001;  /* Higher than navbar */
+  flex-direction: column;   /* Stack children vertically */
+  z-index: 1001;            /* Higher than navbar */
 }
 
+/* When active class is added to body, cart slides in */
 .active .cart {
   right: 0;
 }
 
+/* Cart header */
 .cart h1 {
   color: var(--primary-purple);
   padding: 20px;
@@ -190,13 +204,15 @@ button:hover {
 }
 
 /* ================= CART ITEMS ================= */
+/* Cart items container */
 .listCart {
-  list-style: none;
+  list-style: none;        /* Remove bullet points */
   padding: 20px;
-  flex: 1;
-  overflow-y: auto;
+  flex: 1;                  /* Take remaining space */
+  overflow-y: auto;         /* Scroll if too many items */
 }
 
+/* Individual cart item */
 .listCart li {
   display: flex;
   justify-content: space-between;
@@ -206,6 +222,7 @@ button:hover {
   border-bottom: 1px solid var(--gray-light);
 }
 
+/* Cart action buttons (minus, plus, delete) */
 .listCart button {
   background-color: var(--dark-bg);
   font-size: 12px;
@@ -217,6 +234,7 @@ button:hover {
 }
 
 /* ================= CHECKOUT ================= */
+/* Two-column layout for total and close button */
 .checkOut {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -238,6 +256,7 @@ button:hover {
   background-color: var(--primary-light);
 }
 
+/* Close button (second child) - darker background */
 .checkOut div:nth-child(2) {
   background-color: var(--dark-bg);
 }
@@ -247,12 +266,14 @@ button:hover {
 }
 
 /* ================= CLEAR CART BUTTON ================= */
+/* Container for clear cart button */
 .clear-cart-container {
   padding: 20px;
-  margin-top: auto;
+  margin-top: auto;         /* Pushes to bottom */
   border-top: 1px solid var(--gray-light);
 }
 
+/* Clear cart button - red for warning/destructive action */
 .clear-cart-btn {
   width: 100%;
   padding: 15px;
@@ -271,15 +292,16 @@ button:hover {
 
 .clear-cart-btn:hover {
   background-color: var(--danger-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+  transform: translateY(-2px);    /* Lift effect */
+  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);  /* Stronger shadow */
 }
 
 .clear-cart-btn:active {
-  transform: translateY(0);
+  transform: translateY(0);        /* Press down effect */
   box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
 }
 
+/* Space between icon and text */
 .clear-cart-btn i {
   margin-right: 8px;
 }
