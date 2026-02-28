@@ -1,0 +1,276 @@
+/* ================= CSS VARIABLES ================= */
+:root {
+  --primary-purple: #560bad;
+  --primary-light: #7842b6;
+  --dark-bg: #1c1f25;
+  --light-bg: #f4f4f4;
+  --white: #ffffff;
+  --gray-light: #eee;
+  --gray-medium: #ddd;
+  --gray-dark: #333;
+  --heart-default: #bbb;
+  --heart-liked: red;
+  --quantity-badge: red;
+  --shadow-subtle: rgba(0, 0, 0, 0.08);
+  --shadow-strong: rgba(0, 0, 0, 0.15);
+  --danger-red: #dc3545;  /* New variable for clear cart button */
+  --danger-hover: #c82333;
+}
+
+/* ================= GLOBAL ================= */
+body {
+  background-color: var(--light-bg);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 1000px;
+  margin: auto;
+  transition: 0.4s ease;
+}
+
+.container h1 {
+  color: var(--primary-purple);
+  font-weight: 600;
+}
+
+/* ================= HEADER ================= */
+.container header {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.shopping {
+  position: relative;
+  display: inline-block;
+}
+
+.shopping i {
+  font-size: 24px;
+  color: var(--primary-purple);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.shopping i:hover {
+  color: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.shopping .quantity {  
+  background: var(--quantity-badge);
+  border-radius: 50%;
+  color: var(--white);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  padding: 2px 6px;
+  min-width: 18px;
+  height: 18px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ================= PRODUCT GRID ================= */
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.item {
+  text-align: center;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+  transition: 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px var(--shadow-strong);
+}
+
+.item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item .title {
+  font-weight: bold;
+  margin: 15px 0 8px;
+}
+
+.item .price {
+  color: var(--primary-purple);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ================= BUTTONS ================= */
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary-purple);
+  color: var(--white);
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: var(--primary-light);
+  transform: scale(1.05);
+}
+
+/* ================= HEART ================= */
+.like-btn {
+  display: block;
+  margin-top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--heart-default);
+  transition: 0.3s ease;
+}
+
+.like-btn:hover {
+  transform: scale(1.2);
+}
+
+.liked {
+  color: var(--heart-liked);
+}
+
+/* ================= CART PANEL ================= */
+.cart {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 500px;
+  height: 100vh;
+  background-color: var(--white);
+  border-left: 3px solid var(--primary-purple);
+  box-shadow: -5px 0 20px var(--shadow-strong);
+  transition: 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.active .cart {
+  right: 0;
+}
+
+.cart h1 {
+  color: var(--primary-purple);
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid var(--gray-medium);
+}
+
+/* ================= CART ITEMS ================= */
+.listCart {
+  list-style: none;
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.listCart li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.listCart button {
+  background-color: var(--dark-bg);
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.listCart button:hover {
+  background-color: var(--primary-purple);
+}
+
+/* ================= CHECKOUT ================= */
+.checkOut {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.checkOut div {
+  background-color: var(--primary-purple);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.checkOut div:hover {
+  background-color: var(--primary-light);
+}
+
+.checkOut div:nth-child(2) {
+  background-color: var(--dark-bg);
+}
+
+.checkOut div:nth-child(2):hover {
+  background-color: var(--gray-dark);
+}
+
+/* ================= CLEAR CART BUTTON ================= */
+.clear-cart-container {
+  padding: 20px;
+  margin-top: auto;
+  border-top: 1px solid var(--gray-light);
+}
+
+.clear-cart-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--danger-red);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(220, 53, 69, 0.2);
+}
+
+.clear-cart-btn:hover {
+  background-color: var(--danger-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+}
+
+.clear-cart-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
+}
+
+.clear-cart-btn i {
+  margin-right: 8px;
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome 7 icons library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <!-- Main app container -->
+    <div class="container">
+      <!-- Header with title and cart icon -->
+      <header>
+        <h1>James Shopping Cart</h1>
+        <!-- Personalized store title -->
+
+        <!-- Cart icon with quantity badge -->
+        <div class="shopping">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <!-- Shopping bag icon -->
+          <span class="quantity">0</span>
+          <!-- Dynamic cart item counter -->
+        </div>
+      </header>
+
+      <!-- Product list section - will be populated with items -->
+      <div class="list"></div>
+
+      <!-- Shopping cart sidebar/dropdown -->
+      <div class="cart">
+        <h1>Cart</h1>
+        <!-- Cart header  -->
+        <ul class="listCart"></ul>
+        <!-- Container for cart items (dynamically populated) -->
+
+        <!-- Checkout section -->
+        <div class="checkOut">
+          <div class="total">0</div>
+          <!-- Total price display -->
+          <div class="closeshopping">Close</div>
+          <!-- Button to close/hide cart -->
+        </div>
+
+        <!-- Clear Cart Button (moved OUTSIDE checkOut div) -->
+        <div class="clear-cart-container">
+          <button class="clear-cart-btn">Clear Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main JavaScript file - handles cart functionality -->
+    <script src="main.js"></script>
+  </body>
+</html>
